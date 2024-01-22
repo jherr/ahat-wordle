@@ -1,0 +1,27 @@
+---
+import AvailableLetters from "./AvailableLetters.astro";
+import { calculatePositions } from "../engine/wordle";
+
+const { word, guesses, completed } = Astro.props;
+
+const DEBUG = false;
+
+const extras = {
+  "wrong": "bg-gray-900 text-white",
+  "correct": "bg-green-900",
+  "wrong-place": "bg-yellow-900",
+  "empty": "text-white",
+}
+---
+
+<div class="flex flex-col items-center" id="wordle">
+  <div class="text-white tracking-[1rem] mb-5 w-full uppercase flex justify-center items-center text-3xl font-bold">
+    WORDLE
+  </div>
+
+  <div class="mt-5">
+    <AvailableLetters
+      guesses={guesses}
+    />
+  </div>
+</div>

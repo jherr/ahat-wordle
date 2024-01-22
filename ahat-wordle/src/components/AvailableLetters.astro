@@ -1,0 +1,26 @@
+---
+import { getAvailableLetters } from "../engine/wordle";
+const LINES = [
+  ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+  ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+  ["z", "x", "c", "v", "b", "n", "m"],
+];
+
+const available = getAvailableLetters(Astro.props.guesses);
+---
+
+<div class="flex flex-col gap-2 items-center">
+{LINES.map((line) => (
+  <div class="flex gap-2">
+    {line.map((letter) => (
+      <div
+        class={`flex items-center justify-center w-8 h-12 rounded-md ${
+          available.includes(letter) ? "bg-gray-200" : "bg-gray-700 text-white"
+        }`}
+      >
+        {letter.toUpperCase()}
+      </div>
+    ))}
+  </div>
+))}
+</div>
